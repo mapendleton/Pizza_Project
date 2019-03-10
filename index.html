@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic HTML Template</title>
+        <link rel="stylesheet" href="./css/pizza_style.css">
+    </head>
+
+    <body>
+    <!--PAGE CONTENT-->
+
+        <header>
+            <h1>Your Pizza Company!</h1>
+        </header>
+
+        <!--Pizza order--> <!--Used div instead of H3 because of padding, couldn't get h3 to top of div-->
+        <main>
+            <div class="radio">
+                <div class="pizza_part radio_selection">
+                    <div class="in-radio">
+                        <div class="section-title">Size</div>
+                        <form action="">
+                            <input type="radio" id="s0" onclick="EstimateTotal('s0')" name="Size" value="personal" checked> Personal<br>
+                            <input type="radio" id="s1" onclick="EstimateTotal('s1')" name="Size" value="medium"> Medium<br>
+                            <input type="radio" id="s2" onclick="EstimateTotal('s2')" name="Size" value="large"> Large<br>
+                            <input type="radio" id="s3" onclick="EstimateTotal('s3')" name="Size" value="extra large"> Extra Large
+                        </form>            
+                    </div>
+                </div>
+        
+                <div class="pizza_part radio_selection">
+                    <div class="in-radio">
+                        <div class="section-title">Crust</div>
+                        <form action="">
+                            <input type="radio" id="c0" onclick="EstimateTotal('c0')" name="Crust"  value="plain" checked> Plain<br>
+                            <input type="radio" id="c1" onclick="EstimateTotal('c1')" name="Crust"  value="garlic butter"> Garlic Butter<br>
+                            <input type="radio" id="c2" onclick="EstimateTotal('c2')" name="Crust" value="cheese stuffed"> Cheese Stuffed<br>
+                            <input type="radio" id="c3" onclick="EstimateTotal('c3')" name="Crust"  value="spicy"> Spicy<br>
+                            <input type="radio" id="c4" onclick="EstimateTotal('c4')" name="Crust"  value="house special"> House Special
+                        </form>
+                    </div>
+                </div>
+    
+                <div class="pizza_part radio_selection">
+                    <div class="in-radio">
+                        <div class="section-title">Cheese</div>
+                        <form action="">
+                            <input type="radio" id="ch0" onclick="EstimateTotal('ch0')" name="Cheese" value="regular" checked> Regular<br>
+                            <input type="radio" id="ch1" onclick="EstimateTotal('ch1')" name="Cheese" value="no cheese"> No Cheese<br>
+                            <input type="radio" id="ch2" onclick="EstimateTotal('ch2')" name="Cheese" value="extra cheese"> Extra Cheese
+                        </form>
+                    </div>
+                </div>
+    
+                <div class="pizza_part radio_selection">
+                    <div class="in-radio">
+                        <div class="section-title">Sauce</div>
+                        <form action="">
+                            <input type="radio" name="Sauce" value="marinara" checked> Marinara<br>
+                            <input type="radio" name="Sauce" value="white"> White<br>
+                            <input type="radio" name="Sauce" value="barbeque"> Barbeque<br>
+                            <input type="radio" name="Sauce" value="none"> None
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-container">
+                <div class="pizza_part checklist">
+                    <div class="section-title">Meat</div>
+                    <form class="mv-class" action="">
+                        <input type="checkbox" id="m0" onclick="EstimateTotal('m0')" name="Meat" value="pepperoni"> Pepperoni
+                        <input type="checkbox" id="m1" onclick="EstimateTotal('m1')" name="Meat" value="sausage"> Sausage
+                        <input type="checkbox" id="m2" onclick="EstimateTotal('m2')" name="Meat" value="canadian bacon">  Canadian Bacon<br>
+                        <input type="checkbox" id="m3" onclick="EstimateTotal('m3')" name="Meat" value="ground beef"> Ground Beef
+                        <input type="checkbox" id="m4" onclick="EstimateTotal('m4')" name="Meat" value="anchovy"> Anchovy
+                        <input type="checkbox" id="m5" onclick="EstimateTotal('m5')" name="Meat" value="chicken"> Chicken
+                    </form>
+                </div>
+    
+                <div class="pizza_part checklist">
+                    <div class="section-title">Veggies</div>
+                    <form class="mv-class" action="">
+                        <input type="checkbox" id="v0" onclick="EstimateTotal('v0')" name="veggies" value="tomatoes">  Tomatoes
+                        <input type="checkbox" id="v1" onclick="EstimateTotal('v1')" name="veggies" value="olives"> Olives
+                        <input type="checkbox" id="v2" onclick="EstimateTotal('v2')" name="veggies" value="mushrooms"> Mushrooms
+                        <input type="checkbox" id="v3" onclick="EstimateTotal('v3')" name="veggies" value="spinach"> Spinach<br>
+                        <input type="checkbox" id="v4" onclick="EstimateTotal('v4')" name="veggies" value="onions"> Onions
+                        <input type="checkbox" id="v5" onclick="EstimateTotal('v5')" name="veggies" value="green peppers"> Green Peppers
+                        <input type="checkbox" id="v6" onclick="EstimateTotal('v6')" name="veggies" value="pineapple"> Pineapple
+                        <input type="checkbox" id="v7" onclick="EstimateTotal('v7')" name="veggies" value="jalapeno"> Jalapeno 
+                        
+                    </form>
+                </div>
+            </div>
+
+            <!--Cancel and Order buttons / est total price-->
+
+            <div class="button-container">
+
+                <input id="order" type="button" onclick="Reciept()" name="order-btn" value="Order!">
+                <input id="cancel" type="button" onclick="Cancel()" name="cancel-btn" value="Cancel">
+                <div id="total">
+                      Est Total:  &#36; 6
+                </div>
+
+            </div>
+
+            <!--End buttons / est total price-->
+            
+            <!--Order Review-->
+                <section id="order-review">
+                    <div class="list-container lc1">
+                        <h3>Your Order</h3>
+                        <ul id="orders">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li id="toppingListItem">Toppings = </li>
+                            <li class="footer" id="footer-total-title"></li>
+                        </ul>
+                    </div>
+                    <div class="list-container lc2">
+                        <h3>Sub Total</h3>
+                        <ul id="cost">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li class="footer" id="footer-total"></li>
+                        </ul>
+                    </div>
+                    
+                </section>
+            <!--End order review-->
+            
+        </main>
+        <!--end pizza order-->
+    <!--END PAGE CONTENT-->
+        
+
+    <!--JAVASCRIPT-->
+        <script>
+
+            //storing html elements in arrays
+            var pizzaSize = document.getElementsByName("Size");
+            var pizzaCrust = document.getElementsByName("Crust");
+            var pizzaCheese = document.getElementsByName("Cheese");
+            var pizzaSauce = document.getElementsByName("Sauce");
+            var meats = document.getElementsByName("Meat");
+            var veggies = document.getElementsByName("veggies");
+            var yourOrder = document.getElementById("orders").getElementsByTagName("li");
+            var yourCost = document.getElementById("cost").getElementsByTagName("li");
+            var hideReciept = document.getElementById("order-review");
+            
+            //incase cost of items change, change cost in one place
+            var personalCost = 6;
+            var mediumCost = 10;
+            var largeCost = 14;
+            var extraLargeCost = 16;
+            var stuffedCheeseCost = 3;
+            var extraCheeseCost = 3;
+            //used to display total price as user selects items
+            var estsizeTotal = personalCost;
+            var estCheeseTotal = 0;
+            var estCrustTotal = 0;
+            //total cost of meat toppings
+            var estMeatTotal = 0;
+            //number of meat toppings
+            var numMeat = 0;
+            //total cost of veg toppings
+            var estVegTotal = 0;
+            //num of veggies
+            var numVeg = 0;
+
+
+            //list estimated price as options are selected
+            function EstimateTotal(element)
+            {
+                var elem = document.getElementById(element);
+                if(elem.name == "Size")
+                {
+                    if(elem.id == 's0')
+                    {
+                        estsizeTotal = 0;
+                        estsizeTotal += personalCost;
+                    }
+                    else if(elem.id == 's1')
+                    {
+                        estsizeTotal = 0;
+                        estsizeTotal += mediumCost;
+                    }
+                    else if(elem.id == 's2')
+                    {
+                        estsizeTotal = 0;
+                        estsizeTotal += largeCost;
+                    }
+                    else if(elem.id == 's3')
+                    {
+                        estsizeTotal = 0;
+                        estsizeTotal += extraLargeCost;
+                    }
+                    DisplayTotal();
+                }
+                else if(elem.name == "Crust")
+                {
+                    if(elem.id == 'c2')
+                    {
+                        estCrustTotal = 0;
+                        estCrustTotal += stuffedCheeseCost;
+                    }
+                    else
+                    {
+                        estCrustTotal = 0;
+                    }
+                    DisplayTotal();
+                }
+                else if(elem.name == "Cheese")
+                {
+                    if(elem.value == 'extra cheese')
+                    {
+                        estCheeseTotal = 0;
+                        estCheeseTotal += extraCheeseCost;
+                    }
+                    else
+                    {
+                        estCheeseTotal = 0;
+                    }
+                    DisplayTotal();
+                }
+                else if(elem.name == "Meat")
+                {
+                    //adds a dollar to total if more than 1 meat is selected
+                    if(elem.checked)
+                    {
+                        numMeat++;
+                        if(numMeat > 1)
+                        {
+                            estMeatTotal++
+                        }
+                    }
+                    else if(!elem.checked)
+                    {
+                        numMeat--;
+                        if(numMeat >= 1)
+                        {
+                            estMeatTotal--;
+                        }
+                    }
+                    DisplayTotal();
+                }
+                else if(elem.name == "veggies")
+                {
+                    if(elem.checked)
+                    {
+                        numVeg++;
+                        if(numVeg > 1)
+                        {
+                            estVegTotal++
+                        }
+                    }
+                    else if(!elem.checked)
+                    {
+                        numVeg--;
+                        if(numVeg >= 1)
+                        {
+                            estVegTotal--;
+                        }
+                    }
+                    DisplayTotal();
+                }
+            }
+
+            //displays total
+            function DisplayTotal()
+            {
+                document.getElementById("total").innerHTML = "Est Total: &#36; " + (estsizeTotal + estCheeseTotal + estCrustTotal + estMeatTotal + estVegTotal);
+            }
+
+            function Reciept()
+            {
+                //reset topping list
+                document.getElementById("toppingListItem").innerHTML = "";
+
+                var p_sections = [pizzaSize,pizzaCrust,pizzaCheese,pizzaSauce,meats,veggies];
+                var a = 0;
+
+                for(var i = 0; i < p_sections.length; i++)
+                {
+                    
+                    p_sections[i].forEach(element => 
+                    {
+                        if(element.checked)
+                        {
+                            if(element.name !== "Meat" && element.name !== "veggies")
+                            {
+                                    yourOrder[a].innerHTML = element.name + ": " + element.value;
+
+                                if(element.id == 's0')
+                                {
+                                    yourCost[a].innerHTML = "&#36; " + personalCost;
+                                }
+                                else if(element.id == 's1')
+                                {
+                                    yourCost[a].innerHTML = "&#36; " + mediumCost;
+                                }
+                                else if(element.id == 's2')
+                                {
+                                    yourCost[a].innerHTML = "&#36; " + largeCost;
+                                }
+                                else if(element.id == 's2')
+                                {
+                                    yourCost[a].innerHTML = "&#36; " + extraLargeCost;
+                                }
+                                else if(element.id == 'c2')
+                                {
+                                    yourCost[a].innerHTML = "&#36; " + stuffedCheeseCost;
+                                }
+                                else if(element.id == 'ch2')
+                                {
+                                    yourCost[a].innerHTML = "&#36; " + extraCheeseCost;
+                                }
+                                else
+                                {
+                                    yourCost[a].innerHTML = "&#36; " + 0;
+                                }
+                            }
+                            else
+                            {
+                                yourOrder[a].innerHTML += element.value + ", ";
+                                yourCost[a].innerHTML = "&#36; " + (estVegTotal + estMeatTotal);
+                                a--;
+                            }
+                            a++;
+                        }
+                            
+                    });
+                }
+                document.getElementById("total").innerHTML = "Total: &#36; " + (estsizeTotal + estCheeseTotal + estCrustTotal + estMeatTotal + estVegTotal);
+                document.getElementById("footer-total-title").innerHTML = "Total";
+                document.getElementById("footer-total").innerHTML = "&#36; " + (estsizeTotal + estCheeseTotal + estCrustTotal + estMeatTotal + estVegTotal);
+                hideReciept.style.visibility = "visible";  
+            }
+
+            function Cancel()
+            {
+                hideReciept.style.visibility = "hidden";
+                yourCost[4].innerHTML = "" ;
+                yourOrder[4].innerHTML = "Toppings = ";
+                
+                //default pizza
+                estCheeseTotal = 0;
+                estCrustTotal = 0;
+                estsizeTotal = personalCost;
+                estMeatTotal = 0;
+                numMeat = 0;
+                estVegTotal = 0;
+                numVeg = 0;
+                pizzaSize[0].checked = true;
+                EstimateTotal('s0');
+                pizzaCrust[0].checked = true;
+                pizzaSauce[0].checked = true;
+                pizzaCheese[0].checked = true;
+                meats.forEach(element => {
+                    element.checked = false;
+                });
+                veggies.forEach(element => {
+                    element.checked = false;
+                });
+                DisplayTotal();
+            } 
+
+        </script>
+    <!--END JAVASCRIPT-->
+    </body>
+</html>
